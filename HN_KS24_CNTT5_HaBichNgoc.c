@@ -1,3 +1,6 @@
+//
+// Created by Owner on 7/17/2025.
+//
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -26,13 +29,13 @@ void showMenu() {
     printf("3. Hoan tac lenh sao chep gan nhat\n");
     printf("4. Phuc hoi lenh vua undo\n");
     printf("5. In toan bo noi dung\n");
-    printf("6. THOAT\n");
+    printf("6. THOAT CHUONG TRINH\n");
     printf("------------------------------------------\n");
 }
 void thucHienCopy() {
     char input[MAX_LEN];
     printf("Nhap van ban can sao chep: ");
-    getchar(); 
+    getchar();
     fgets(input, MAX_LEN, stdin);
     strtok(input, "\n");
 
@@ -41,7 +44,7 @@ void thucHienCopy() {
     newNode->next = clipboardStack.top;
     clipboardStack.top = newNode;
 
-    
+
     while (redoStack.top != NULL) {
         Node* temp = redoStack.top;
         redoStack.top = temp->next;
@@ -52,13 +55,10 @@ void thucHienCopy() {
 }
 void paste() {
     if (clipboardStack.top == NULL) {
-        printf("Khong co noi dung de dan\n");
+        printf("Nhap van ban can sao chep: ");
         return;
     }
-
-    printf("Noi dung da dan: %s\n", clipboardStack.top->text);
 }
-
 int main() {
     int choice;
     do {
@@ -67,21 +67,21 @@ int main() {
         scanf("%d", &choice);
 
         switch (choice) {
-                case 1: 
-			        showMenu(); 
-			        break;
-                case 2:
-                	paste();
-			        break;
-                case 3:
-			        break;
-                case 4: 
-				    break;
-                case 5:
-				    break;
-                case 6: 
-				printf("Thoat chuong trinh!\n"); 
-				break;
+            case 1:
+                showMenu();
+                break;
+            case 2:
+                paste();
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                printf("Thoat chuong trinh!\n");
+                break;
             default: printf("Lua chon khong hop le!\n");
         }
 
