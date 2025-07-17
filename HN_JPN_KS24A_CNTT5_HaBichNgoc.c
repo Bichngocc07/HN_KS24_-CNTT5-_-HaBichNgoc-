@@ -76,40 +76,6 @@ void hienThiDuAn() {
         temp = temp->next;
     }
 }
-void xoaDuAn(int id) {
-    Node *temp = headSelling, *prev = NULL;
-
-    // Tru?ng h?p danh sách r?ng
-    if (temp == NULL) {
-        printf("?? Danh sach du an trong!\n");
-        return;
-    }
-
-    // N?u ph?n t? d?u tiên là d? án c?n xóa
-    if (temp != NULL && temp->data.id == id) {
-        headSelling = temp->next;
-        printf("??? Da xoa du an: %s\n", temp->data.title);
-        free(temp);
-        return;
-    }
-
-    // Tìm ph?n t? c?n xóa
-    while (temp != NULL && temp->data.id != id) {
-        prev = temp;
-        temp = temp->next;
-    }
-
-    // Không tìm th?y
-    if (temp == NULL) {
-        printf("? Khong tim thay du an co ID: %d\n", id);
-        return;
-    }
-
-    // Xóa ph?n t?
-    prev->next = temp->next;
-    printf("Da xoa du an: %s\n", temp->data.title);
-    free(temp);
-}
 
 int main() {
     int choice , id;
@@ -122,16 +88,12 @@ int main() {
         switch (choice) {
             case 1:
                 themDuAn(); 
-				break;
+		break;
             case 2:
                 hienThiDuAn(); 
-				break;
+		break;
             case 3:
-                printf("Nhap ID du an can xoa: ");
-                scanf("%d", &id);
-                xoaDuAn(id);
                 break;
-
             case 8:
                 printf("Thoat chuong trinh!\n"); 
 				break;
